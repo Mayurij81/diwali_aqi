@@ -2,7 +2,7 @@
 
 A short data note comparing modelled hourly PM2.5 in Solapur, Pune, Mumbai, Hyderabad and Delhi around Diwali 2026 (Lakshmi Puja: 8 November), with method, limitations and references.
 
-**Live demo:** _add your Vercel link_ · **Screenshot:** _add one here_
+**Live demo:** _[Project Link](https://diwali-aqi-git-main-mayurij0306-1498s-projects.vercel.app/)_ · 
 
 ## Structure
 ```
