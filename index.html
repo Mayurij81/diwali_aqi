@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Did Diwali 2026 change the air? PM2.5 in five Indian cities</title>
+<meta name="description" content="A data note comparing hourly PM2.5 in Solapur, Pune, Mumbai, Hyderabad and Delhi around Diwali 2026, with method, limitations and sources.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+<div class="kicker">Data note · November 2026</div>
+<h1>Did Diwali change the air? Hourly PM2.5 in five Indian cities</h1>
+<div class="by">By Mayuri Jadhav, Walchand Institute of Technology, Solapur · Data retrieved <span id="when">…</span> · <a href="#" id="csv">Download data (CSV)</a></div>
+
+<p class="abstract" id="abstract">Loading data…</p>
+
+<div class="stats" id="stats"></div>
+
+<h2><b>1</b>Question</h2>
+<p>Fireworks release large amounts of fine particles within a few evening hours, and Diwali also falls when post-monsoon weather can leave air stagnant over much of India. This note asks a narrow, checkable question: <em>did modelled hourly PM2.5 in five cities rise during the Diwali window (7–9 November 2026) compared with the quiet week before, and is the rise concentrated in the evening and night?</em> Lakshmi Puja, the main Diwali day, was on 8 November.</p>
+
+<h2><b>2</b>Data and method</h2>
+<ul>
+<li><b>Cities:</b> Solapur (home town), Pune and Mumbai (Maharashtra), Hyderabad and Delhi, each taken at one coordinate point.</li>
+<li><b>Air quality:</b> hourly PM2.5 in µg/m³ from the Open-Meteo Air Quality API, which serves atmospheric-composition model output (Copernicus CAMS). These are modelled estimates, not ground-sensor readings.</li>
+<li><b>Weather:</b> hourly 10 m wind speed from the Open-Meteo forecast API, used as a first check on whether weather alone could explain a change.</li>
+<li><b>Baseline:</b> 25 October to 1 November, a stretch before the festival week. <b>Window:</b> 7–9 November (Choti Diwali to the day after Lakshmi Puja).</li>
+<li><b>Metrics:</b> mean PM2.5 in each period; percentage change = (window mean − baseline mean) ÷ baseline mean × 100; window peak (highest hour); and hours above 60 µg/m³, India’s 24-hour PM2.5 standard, used only as a reference line because it is a daily limit and the data are hourly.</li>
+<li><b>Hour-of-day profile:</b> PM2.5 varies through the day anyway, so Figure 2 compares each hour on 8 and 9 November with the average for the same hour across the baseline days.</li>
+</ul>
+
+<h2><b>3</b>Results</h2>
+<figure>
+<div class="tabs" id="tabs"></div>
+<div class="box"><canvas id="c1"></canvas></div>
+<figcaption><b>Figure 1.</b> Hourly PM2.5 (left axis) and wind speed (right axis). Shaded band: Diwali window. Dashed line: 60 µg/m³ reference.</figcaption>
+</figure>
+<p id="citytext"></p>
+<figure>
+<div class="box"><canvas id="c2"></canvas></div>
+<figcaption><b>Figure 2.</b> Hour-of-day profile for the selected city: baseline average versus 8 and 9 November. Fireworks are usually burst in the evening, so that is where an event effect would show.</figcaption>
+</figure>
+<figure>
+<div class="box"><canvas id="c3"></canvas></div>
+<figcaption><b>Figure 3.</b> Mean PM2.5 in the baseline period and the Diwali window, by city.</figcaption>
+</figure>
+<figure>
+<div class="scroll"><table id="tbl"></table></div>
+<figcaption><b>Table 1.</b> Summary statistics. “Wind” is mean 10 m wind speed in the window versus the baseline; lower wind generally lets pollution build up.</figcaption>
+</figure>
+
+<h2><b>4</b>Limitations</h2>
+<ul>
+<li><b>Modelled, not measured.</b> The values are model estimates on a grid several kilometres wide, so they smooth out local hotspots and may not match a nearby monitoring station.</li>
+<li><b>Weather is a confounder.</b> Wind, humidity and temperature changed over these weeks too. The wind column is a first check, not a control; a rise that coincides with Diwali is consistent with fireworks but does not isolate them.</li>
+<li><b>Baseline choice matters.</b> A different baseline gives different percentages. The settings in <code>api/data.js</code> can be changed to test this.</li>
+<li><b>One festival, one year, five points.</b> The note describes what happened here and does not support wider claims.</li>
+</ul>
+
+<h2><b>5</b>Next steps</h2>
+<ol>
+<li>Validate against ground monitors (CPCB / OpenAQ) in the same cities.</li>
+<li>Repeat for earlier Diwali dates, which move each year, to see whether the pattern repeats.</li>
+<li>Adjust for weather statistically instead of reading wind side by side.</li>
+</ol>
+
+<h2>References</h2>
+<ol class="refs">
+<li>Open-Meteo, Air Quality API and Weather Forecast API documentation, open-meteo.com (data licensed CC BY 4.0).</li>
+<li>Copernicus Atmosphere Monitoring Service (CAMS), atmosphere.copernicus.eu.</li>
+<li>Central Pollution Control Board, National Ambient Air Quality Standards (2009): PM2.5, 24-hour limit 60 µg/m³, cpcb.nic.in.</li>
+<li>World Health Organization, Global Air Quality Guidelines (2021).</li>
+</ol>
+
+<div class="foot">Data are fetched by a small serverless API (<code>api/data.js</code>) from Open-Meteo, cached for an hour, and recalculated on each refresh, so figures may change slightly as the model data are revised.</div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

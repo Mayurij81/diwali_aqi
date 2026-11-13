@@ -1,0 +1,7 @@
+{
+  "name": "diwali-aqi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PM2.5 around Diwali 2026 in five Indian cities",
+  "engines": { "node": ">=18" }
+}
