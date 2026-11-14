@@ -1,5 +1,5 @@
 
-# Did Diwali Change the Air? PM2.5 Across Five Indian Cities
+# Did Diwali Change the Air? PM2.5 Across Five Cities in India
 
 An interactive data analysis exploring how PM2.5 concentrations changed around Diwali 2026 across **Solapur, Pune, Mumbai, Hyderabad and Delhi**.
 
